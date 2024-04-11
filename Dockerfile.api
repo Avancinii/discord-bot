@@ -1,0 +1,16 @@
+# Use uma imagem Node.js
+FROM node:14
+
+# Defina o diretório de trabalho no contêiner
+WORKDIR /usr/src/api
+
+# Copie os arquivos necessários para o diretório de trabalho
+COPY package.json .
+COPY package-lock.json .
+COPY src/ .
+
+# Instale as dependências do projeto
+RUN npm install
+
+# Comando para iniciar a API
+CMD ["node", "server.js"]
