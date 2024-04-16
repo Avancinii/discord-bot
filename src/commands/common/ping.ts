@@ -7,14 +7,6 @@ export default new Command({
     type: ApplicationCommandType.ChatInput,
     run({interaction}) {
 
-        const row = new ActionRowBuilder<ButtonBuilder>({ components: [
-            new ButtonBuilder({ style: ButtonStyle.Primary, label: "Clique Aqui", customId: "test-button" })
-        ]})
-        interaction.reply({ephemeral: true, content: "Pong!", components: [row]})
+        interaction.reply({content: "pong"});       
     },
-    buttons: new Collection([
-        ["test-button", async (interaction) => {
-            interaction.update({ components: []});
-        }]
-    ])
 })
