@@ -1,4 +1,4 @@
-import { ApplicationCommandData, ButtonInteraction, Collection, CommandInteraction, CommandInteractionOptionResolver, Interaction, ModalSubmitInteraction, StringSelectMenuBuilder } from "discord.js";
+import { ApplicationCommandData, ButtonInteraction, Collection, CommandInteraction, CommandInteractionOptionResolver, ModalSubmitInteraction, StringSelectMenuInteraction } from "discord.js";
 import { ExtendedClient } from "../ExtendedClient";
 
 interface CommandProps {
@@ -7,9 +7,9 @@ interface CommandProps {
     options: CommandInteractionOptionResolver
 }
 
-export type ComponentsButton = Collection<string, (Interaction: ButtonInteraction) => any>
-export type ComponentsSelect = Collection<string, (Interaction: StringSelectMenuBuilder) => any>
-export type ComponentsModal = Collection<string, (Interaction: ModalSubmitInteraction) => any>
+export type ComponentsButton = Collection<string, (interaction: ButtonInteraction) => any>
+export type ComponentsSelect = Collection<string, (interaction: StringSelectMenuInteraction) => any>
+export type ComponentsModal = Collection<string, (interaction: ModalSubmitInteraction) => any>
 
 interface CommandComponents {
     buttons?: ComponentsButton;

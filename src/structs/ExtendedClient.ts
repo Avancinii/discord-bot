@@ -44,7 +44,7 @@ export class ExtendedClient extends Client {
         fs.readdirSync(commandsPath).forEach(local => {
             fs.readdirSync(commandsPath + `/${local}/`).filter(fileCondition).forEach( async fileName => {
                 const command: CommandType = (await import(`../commands/${local}/${fileName}`))?.default;
-                const { name, buttons, selects,modals } = command;
+                const { name, buttons, selects, modals } = command;
 
                 if(name){
                     this.commands.set(name, command);
