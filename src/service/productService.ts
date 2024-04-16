@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import { Request, Response } from 'express';
 
 const prisma = new PrismaClient();
 
@@ -8,8 +7,7 @@ export class ProductService {
         try {
             return prisma.product.findMany();
         } catch (error) {
-            console.error(error);
-            return error;
+            throw new Error('Failed to create product');
         }
     }
 
@@ -21,8 +19,7 @@ export class ProductService {
                 }
             });
         } catch (error) {
-            console.error(error);
-            return error;
+            throw new Error('Failed to get product');
         }
     }
 
@@ -32,8 +29,7 @@ export class ProductService {
                 data: data
             });
         } catch (error) {
-            console.error(error);
-            return error;
+            throw new Error('Failed to create product');
         }
     }
 
@@ -46,10 +42,18 @@ export class ProductService {
                 data: data
             });
         } catch (error) {
-            console.error(error);
-            return error;
+            throw new Error('Failed to update product');
         }
     }
+    async deleteProduct(id: number) {
+        try {
+            return prisma.product.delete({
+                where: {
+                    id: id
+                }
+            });
+        } catch (error) {
+            throw new Error('Failed to delete product');
+        }
+    } 
 }
-
-export default new ProductService();
