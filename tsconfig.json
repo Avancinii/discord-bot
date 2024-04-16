@@ -1,9 +1,19 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "outDir": "dist",
+    "target": "ES6",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "sourceMap": true,    
     "strict": true,
+    "noImplicitAny": true,
+    "declaration": false,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
     "lib": ["esnext"],
-    "esModuleInterop": true 
-  } 
+    "esModuleInterop": true,
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"] 
 }
