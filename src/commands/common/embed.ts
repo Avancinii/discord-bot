@@ -10,7 +10,10 @@ export default new Command({
     type: ApplicationCommandType.ChatInput,
     async run({ interaction }) {
 
-        const products = await productService.getAllProducts();
+        let products = await productService.getAllProducts();
+        if( products.length > 10 ) {
+            products = products.slice(0, 10);
+        }
 
         const embeds = [] as EmbedBuilder[];
         products.forEach(product => {
