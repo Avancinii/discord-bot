@@ -3,7 +3,7 @@ import { ProductService } from "../service/productService";
 
 const productService = new ProductService();
 
-router.get("/product", async (req, res) => {
+router.get("/product/getAllProducts", async (req, res) => {
     try {
         const product = await productService.getAllProducts();
         res.status(201).json(product);
@@ -13,7 +13,7 @@ router.get("/product", async (req, res) => {
 
 });
 
-router.get('/product/:id', async (req, res) => {
+router.get('/product/findById/:id', async (req, res) => {
     try {
         const product = await productService.getProductById(Number(req.params.id));
         res.status(200).json(product);
@@ -22,7 +22,7 @@ router.get('/product/:id', async (req, res) => {
     }
 });
 
-router.post("/product", async (req, res) => {
+router.post("/product/createProduct", async (req, res) => {
     try {
         const product = await productService.createProduct(req.body);
         res.status(201).json(product);
@@ -31,7 +31,7 @@ router.post("/product", async (req, res) => {
       }
 });
 
-router.put("/products/:id", async (req, res) => {
+router.put("/product/updateProduct/:id", async (req, res) => {
     try {
         const product = await productService.updateProduct(Number(req.params.id), req.body);
         res.status(200).json(product);
@@ -40,7 +40,7 @@ router.put("/products/:id", async (req, res) => {
       }
 });
 
-router.delete("/product/:id", async (req, res) => {
+router.delete("/product/deleteProduct/:id", async (req, res) => {
     try {
         const product = await productService.deleteProduct(Number(req.params.id));
         res.status(200).json(product);

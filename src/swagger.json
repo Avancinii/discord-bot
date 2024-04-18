@@ -1,0 +1,148 @@
+{
+    "openapi": "5.0.0",
+    "info": {
+        "title": "API de Produtos",
+        "description": "API de Produtos",
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/product/getAllProducts" : {
+            "get": {
+                "summary": "Listar Produtos",
+                "description": "Listar Produtos",
+                "responses": {
+                    "200": {
+                        "description": "Listagem de Produtos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/findById/:id" : {
+            "get": {
+                "summary": "Buscar Produto",
+                "description": "Buscar Produto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID do Produto",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/createProduct" : {
+            "post": {
+                "summary": "Cadastrar Produto",
+                "description": "Cadastrar Produto",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto Cadastrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/updateProduct/:id" : {
+            "put": {
+                "summary": "Atualizar Produto",
+                "description": "Atualizar Produto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID do Produto",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto Atualizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/deleteProduct/:id" : {
+            "delete": {
+                "summary": "Deletar Produto",
+                "description": "Deletar Produto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID do Produto",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto Deletado"
+                    }
+                }
+            }
+        }
+    }
+}
